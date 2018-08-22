@@ -1,0 +1,153 @@
+.E_carousel
+	$carouselQuery = 1360px
+	position: relative
+
+	&.-dynamicContent
+		margin: auto
+		// Height of the miniatures
+		min-height: 225px
+
+		+Q_custom($carouselQuery)
+			max-width: calc(100% - 100px)
+
+		+BSQ_MD()
+			min-height: 250px
+
+		+BSQ_SM()
+			min-height: 300px
+
+		+BSQ_XS()
+			min-height: calc((100vw / 2.5))
+			max-width: calc(100% - 50px)
+
+		.loadSpinner
+			position: absolute
+			right: -50px
+			bottom: 25px
+
+			&__image
+				margin: auto
+				width: 32px
+				height: 32px
+
+	&.-dark
+		& ^[-1]__arrowRight
+			M_absolute_centerVertical()
+			right: -50px
+			width: 26px
+			height: 50px
+			background-image: url('../images/icons/slideArrow_right_dark.png')
+			cursor: pointer
+			background-size: contain
+			z-index: 1
+
+			+BSQ_XS()
+				right: -25px
+				width: 13px
+				height: 25px
+
+			&.-disabled
+				cursor: not-allowed
+				opacity: 0.4
+
+		& ^[-1]__arrowLeft
+			M_absolute_centerVertical()
+			left: -50px
+			width: 26px
+			height: 50px
+			background-image: url('../images/icons/slideArrow_left_dark.png')
+			cursor: pointer
+			background-size: contain
+			z-index: 1
+
+			+BSQ_XS()
+				left: -25px
+				width: 13px
+				height: 25px
+
+			&.-disabled
+				cursor: not-allowed
+				opacity: 0.4
+
+	&__cta
+		M_absolute_centerHorizontal()
+		bottom: -30px
+		box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.3)
+		border-radius: 10px
+		text-transform: uppercase
+		border: none
+		font-size: 20px
+		padding: 20px 35px
+
+		+BSQ_XS()
+			position: relative
+			bottom: inherit
+			display: block
+			border-radius: 0
+
+	.slick-slide
+		outline: none
+
+	&.-photoSlide
+		^[-1]
+			&__inner
+				&__item
+					img
+						width: 100%
+
+		.slick-next, .slick-prev
+			z-index: 1
+			position: absolute
+			top: 0
+			bottom: 0
+			width: 15%
+			font-size: 20px
+			color: #fff
+			text-align: center
+			text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6)
+			background-color: rgba(0, 0, 0, 0)
+			opacity: 0.5
+			border: none
+			outline: none
+			cursor: pointer
+			text-indent: -9999px
+
+			&:hover
+				color: #fff
+				text-decoration: none
+				outline: 0
+				opacity: 0.9
+
+		.slick-prev
+			left: 0
+			background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.0001) 100%)
+			background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.0001) 100%)
+			background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.0001)))
+			background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.0001) 100%)
+			background-repeat: repeat-x
+
+			&:before
+				M_absolute_centerVertical()
+				position: absolute
+				left: 20%
+				content: ''
+				width: 26px
+				height: 50px
+				background-image: url('../images/icons/slideArrow_left.png')
+
+		.slick-next
+			right: 0
+			background-repeat: repeat-x
+			background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0, rgba(0, 0, 0, 0.5) 100%)
+			background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0, rgba(0, 0, 0, 0.5) 100%)
+			background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.0001)), to(rgba(0, 0, 0, 0.5)))
+			background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0, rgba(0, 0, 0, 0.5) 100%)
+
+			&:before
+				M_absolute_centerVertical()
+				position: absolute
+				right: 20%
+				content: ''
+				width: 26px
+				height: 50px
+				background-image: url('../images/icons/slideArrow_right.png')

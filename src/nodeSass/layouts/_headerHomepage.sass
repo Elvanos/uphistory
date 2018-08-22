@@ -1,0 +1,230 @@
+//LAYOUT - HEADER - HOMEPAGE
+
+.header
+	padding: 0px 40px 0px
+	background-color: $letMainGreenDark
+	border-bottom: 1px solid $letMainGreenMiddle
+	border-top: 3px solid $letMainGreenLight
+	position: fixed
+	top: 0
+	z-index: 999
+	width: 100%
+	max-height: 100vh
+
+	+BEM(formLine,cs)
+		padding: 13px 0px
+
+	+BEM(dropdownPick,cs)
+		margin: 0 10px 0 10px
+		padding: 0
+
+		a
+			padding: 20px 10px
+
+		+BEM(main,m)
+			padding: 20px 10px
+
+	// Left part of menu
+	+BEM(alwaysVisible)
+		float: left
+
+		+BEM(logo)
+			float: left
+
+		+BEM(searchWrapper)
+			float: left
+			padding: 0 10px
+
+	// Hamburger menu and trigger
+	+BEM(hamburgerControl)
+		$helper: BEM_helper(set) !global
+
+		display: none
+		position: absolute
+		right: 40px
+		top: 18px
+		cursor: pointer
+
+		+BEM(wrap)
+			width: 25px
+			height: 25px
+
+			+BEM(line)
+				border-top: 6px solid #fff
+				position: absolute
+				width: 100%
+				transition: transform 0.5s, border 0.3s, bottom 0.5s, top 0.5s
+
+				+BEM(nth-child(1),s)
+					top: 0
+				+BEM(nth-child(2),s)
+					+M_VerticalCenterAbsolute
+				+BEM(nth-child(3),s)
+					bottom: 0
+
+		+BEM(opened,m)
+
+			#{BEM_helper(get)}
+
+				+BEM(wrap)
+					+BEM(line)
+						+BEM(nth-child(1),s)
+							top: 10px
+							bottom: inherit
+							transform: rotate(60deg)
+							border-top: 2px solid #fff
+						+BEM(nth-child(2),s)
+							border: transparent
+						+BEM(nth-child(3),s)
+							top: 10px
+							bottom: inherit
+							transform: rotate(120deg)
+							border-top: 2px solid #fff
+
+	+BEM(hamburgerMenu)
+
+		+BEM(languageSwitcher)
+			float: right
+			position: relative
+
+		+BEM(info)
+			float: right
+			position: relative
+
+			.dropdownPick
+				margin: 0
+
+			.dropdownMenu
+				left: inherit
+				white-space: nowrap
+
+		+BEM(accountManagement)
+			display: inline-block
+
+			+BEM(FBLogin)
+				background-image: linear-gradient(to bottom, rgba(127,162,222,1) 0%, rgba(45,90,157,1) 100%)
+				background: url(../images/icons/fb_login.png) left top no-repeat
+				background-position: -10px
+				background-size: cover
+				padding: 5px 10px 5px 30px
+				border-color: #3B5998
+
+
+	// MEDIA QUERY -LARGE
+	+BSQ_LG
+		+BEM(hamburgerMenu)
+			display: inline-block !important
+			float: right
+
+	//MEDIA QUERY - MEDIUM
+	+BSQ_MD
+
+		+BEM(alwaysVisible)
+			float: none
+
+		+BEM(hamburgerControl)
+			display: block
+
+		+BEM(hamburgerMenu)
+			display: none
+
+			+BEM(opened,m)
+				display: block
+
+	//MEDIA QUERY - SMALL
+	+BSQ_SM
+		padding: 0 10px
+
+		+BEM(alwaysVisible)
+
+			+BEM(formLine,cs)
+
+				+BEM(element)
+					display: inline-block
+					padding: 0
+
+		+BEM(hamburgerControl)
+			right: 20px
+
+	//MEDIA QUERY - EXTRA SMALL
+	+BSQ_XS
+		overflow: hidden
+
+		+BEM(dropdownPick,cs)
+
+			+BEM(dropdownMarker)
+				float: right
+				margin-top: 10px
+
+		+BEM(alwaysVisible)
+
+			+BEM(logo)
+
+				img
+					height: 35px
+					margin-top: 10px
+
+			+BEM(searchWrapper)
+				padding: 0px 10px 0
+
+		+BEM(hamburgerMenu)
+			overflow: auto
+			padding-bottom: 10px
+
+			+BEM(languageSwitcher)
+				float: none
+
+				+BEM(dropdownPick,cs)
+					border-bottom: 1px solid $letMainGreenMiddle
+
+			+BEM(info)
+				float: none
+
+				+BEM(dropdownPick,cs)
+					margin: 0 10px
+					border-top: 1px solid $letMainGreenMiddle
+					border-bottom: 1px solid $letMainGreenMiddle
+
+			+BEM(formLine,cs)
+
+				+BEM(element)
+					display: block
+
+				+BEM(divider)
+					display: none
+
+			+BEM(accountManagement)
+				float: none
+				display: block
+
+				+BEM(FBLogin)
+					background-position: inherit
+
+				+BEM(button,cs)
+					width: 100%
+
+			+BEM(dropdownMenu,cs)
+				position: relative
+				top: inherit
+				left: inherit
+				right: inherit
+				z-index: 1
+				float: none
+
+	// MEDIA QUERY - SPECIAL
+	+Q_Custom('max-width: 590px')
+
+		+BEM(alwaysVisible)
+
+			+BEM(mapButton)
+				display: none !important
+
+			+BEM(searchWrapper)
+				+BEM(searchField)
+					width: calc(100vw - 230px) !important
+
+			+BEM(formLine,cs)
+				+BEM(divider)
+					display: none !important
+
+

@@ -1,0 +1,189 @@
+body,
+html
+	//overflow auto
+	+BSQ_MD()
+		&.-isLocked
+			overflow hidden
+
+body
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 14px
+	color: $let_defaultTextColor
+	
+// H1
+h1
+	font-size: 4rem
+	font-weight: 600
+	margin 0
+	
+	&.-marginBottom
+		margin-bottom: 0.67em
+	&.-marginTop
+		margin-top: 0.67em
+		
+	+BSQ_XS()
+		font-size: 2.7rem
+		
+// H2
+h2
+	font-size: 2.5rem
+	font-weight: 600
+	margin 0
+	
+	&.-marginBottom
+		margin-bottom: 0.83em
+	&.-marginTop
+		margin-top: 0.83em
+	
+	+BSQ_XS()
+		font-size: 1.9rem
+		
+
+// H3
+h3
+	font-size: 1.6rem
+	font-weight: 600
+	line-height: 1.5
+	margin: 0
+	
+	&.-marginBottom
+		margin-bottom: 1em
+	&.-marginTop
+		margin-top: 1em
+		
+	+BSQ_XS()
+		font-size: 1.4rem
+
+
+// Link
+a
+	color: white
+	text-decoration: none
+	outline none
+	
+	+M_mouseStates()
+		text-decoration: none
+		color: white
+	
+	&.fancy
+		display: inline-block
+		position: relative
+		
+		&:before
+			content: ''
+			transition: .4s linear
+			height: 1px
+			position: absolute
+			left: 0
+			bottom: -0.3em;
+			width: 0
+			background-color: #fff
+		
+		&:hover
+			&:before
+				width: 100%
+
+				
+// UL
+ul
+	margin 0
+
+// Input
+input
+	border-radius: 3px
+	transition: 0.2s all ease-out
+	border: 1px solid $let_mainGreyLight
+	background-color: $let_mainGreyDark
+	color: #fff
+	padding: 7px 10px;
+	font-size: 1rem
+	+M_placeholder()
+		color: $letMainGreyLight
+	
+	&:focus
+		border-color: lighten($let_mainGreyLight, 10)
+		background-color: lighten($let_mainGreyDark, 10)
+		outline: none
+		+M_placeholder()
+			color: transparent
+	
+
+	&.-invert
+		border-color: $let_mainGreyDark
+		background-color: white
+		color: $let_mainGreyDark
+		padding: 5px 10px
+		font-size: 1.1em
+		+M_placeholder()
+			color: $let_mainGreyLight
+		
+		&:focus
+			border-color: lighten($let_mainGreyDark, 10)
+			background-color: white
+			outline: none
+			+M_placeholder()
+				color: transparent
+			
+	&[type='radio'],
+	&[type='checkbox']
+		display: none
+		
+
+// Textarea
+textarea
+	border-radius 3px
+	transition: 0.2s all ease-out
+	border: 1px solid $let_mainGreyLight
+	background-color: $let_mainGreyDark
+	color: #fff
+	padding: 5px 10px
+	font-size: 1.1em
+	min-height: 8em
+	+M_placeholder()
+		color: $let_mainGreyLight
+	
+	&:focus
+		border-color: lighten($let_mainGreyLight, 10)
+		background-color: lighten($let_mainGreyDark, 10)
+		outline: none
+		+M_placeholder()
+			color: transparent
+	
+	&.-invert
+		border-color: $let_mainGreyDark
+		background-color: white
+		color:  $let_mainGreyDark
+		padding: 5px 10px
+		font-size: 1.1em
+		+M_placeholder()
+			color: $let_mainGreyLight
+		
+		&:focus
+			border-color: lighten($let_mainGreyDark, 10)
+			background-color: white
+			outline: none
+			+M_placeholder()
+				color: transparent
+
+// Select
+select
+	border-radius 3px
+	transition: 0.2s all ease-out
+	border: 1px solid $let_mainGreyLight
+	background-color: $let_mainGreyDark
+	color: #fff
+	padding: 5px 10px
+	font-size: 1.1em
+	
+	&:focus
+		border-color: lighten($let_mainGreyLight, 10)
+		background-color: lighten($let_mainGreyDark, 10)
+		outline: none
+
+// Form
+form
+	display: inline
+	
+// Label
+label
+	cursor: pointer

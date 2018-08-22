@@ -1,0 +1,56 @@
+// DROPDOWN PICK
+.dropdownPick
+	+M_Transition(0.2s all linear)
+	color: white	
+	font-size: 1em
+	cursor: pointer
+	background-color: $letMainGreenDark
+
+	+BEM(hover,s)
+		background-color: $letMainGreenMiddle
+
+	a
+		display: block
+		color: white
+		+M_LinkMods
+			text-decoration: none
+			color: white
+
+	+BEM(dropdownMarker)
+		margin-left: 5px
+		vertical-align: middle
+
+	+BEM(mobileDescription,cs)
+		+BSQ_XS
+			display: inline-block
+			font-size: 1.2em
+			&:before
+				content: '|'
+				margin: 0 10px
+
+	img
+		margin-right: 5px
+		height: 16px
+		margin-top: -2px
+
+
+
+	+BEM(dropdownMarker)
+		background-image: url(../images/icons/dropdown.png)
+		background-repeat: no-repeat
+		height: 6px
+		width: 12px
+		display: inline-block
+		+M_Transition(0.2s all linear)
+
+		$helper: BEM_helper(set) !global
+
+
+.open
+	+BEM(dropdownPick, cs)
+		+BEM(main,m)
+			background-color: $letMainGreenMiddle
+
+	#{BEM_helper(get)}
+		+M_Tranform(rotate(180deg))
+

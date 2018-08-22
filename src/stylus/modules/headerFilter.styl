@@ -1,0 +1,44 @@
+.M_headerFilter
+	position: fixed
+	width: 100%
+	top: 0
+	display: flex
+	padding 10px 35px
+	background-color: #fff
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2)
+	z-index 5
+	
+	&__filterElement
+		display: flex
+		align-items center
+		color: $let_defaultTextColor
+		font-size 0.9rem
+		
+		// Checkbox align fix
+		line-height: 0;
+		
+		&__label
+			padding 0 5px
+			user-select: none;
+			
+			label
+				user-select: none;
+		
+		&__input
+			padding 0 5px
+			user-select: none;
+			display: flex
+			
+			.fancyCheckbox,
+			.fancyRadio
+				margin-right -5px
+			
+		.button
+			line-height: 1
+			
+		.E_slider
+			width: 125px
+			margin 0 5px
+	
+	+BSQ_MD()
+		display: none

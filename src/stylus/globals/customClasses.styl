@@ -1,0 +1,376 @@
+.pageWrapper
+	// max-width: 100vw
+	// overflow-x: hidden
+	background: #fff url('../images/backgrounds/background.png')
+
+.formElement
+	margin-right: 5px
+
+	+BSQ_XS()
+		margin: 0
+		padding: 10px 0
+
+.formSubmiter
+	cursor: pointer
+
+.formDivider
+	// Asymetrical margin because of form elements having 5px on the right
+	margin: 0 10px 0 5px
+	border-left: solid 1px #5e5e5e
+	display: flex
+	height: 30px
+	align-self: center
+
+.textDivider
+	margin: 0 2px
+
+	&:before
+		content: '|'
+		position: relative
+		top: -2px
+
+.text
+	&.-link
+		color: $let_flLinkColor
+		
+	&.-green
+		color: $let_mainGreenLight
+
+	&.-white
+		color: $let_white
+
+	&.-red
+		color: $let_red
+
+.bg
+	&.-green
+		background-color: $let_mainGreenLight
+
+// BUTTON
+.button
+	border-radius: 3px
+	transition: 0.2s all ease-out
+	border: 1px solid transparent
+	padding: 7px 10px
+	display: flex
+	text-align: center
+	font-size: 1rem
+	font-weight: 600
+	letter-spacing: 1px
+	white-space: nowrap
+
+	img
+		max-width: 18px
+
+	&:hover
+		cursor: pointer
+
+	&:active
+		box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125)
+
+	&.-icon
+		height: calc(1rem + 2px)
+		padding-left: 40px
+		padding-right: 0
+		background-repeat: no-repeat
+		background-position: 10px center
+		background-size: 18px
+
+		&.-hasText
+			padding-right: 10px
+
+		&.-map
+			background-image: url('../images/icons/map.png')
+
+		&.-search
+			background-image: url('../images/icons/searchSubmit.png')
+
+	&.-green
+		background-color: $let_mainGreenLight
+		border-color: white
+		color: white
+
+		&:hover
+			background-color: darken($let_mainGreenLight, 5)
+			border-color: darken($let_mainGreenMiddle, 5)
+
+		&.-invert
+			background-color: white
+			border-color: $let_mainGreenLight
+			color: $let_mainGreenLight
+
+			&:hover
+				background-color: $let_mainGreenLight
+				border-color: $let_mainGreenMiddle
+
+	&.-grey
+		background-color: $let_mainGreyLight
+		border-color: $let_mainGreyDark
+		color: white
+
+		&:hover
+			background-color: darken($let_mainGreyLight, 10)
+			border-color: darken($let_mainGreyDark, 10)
+
+		&.-invert
+			background-color: white
+			border-color: white
+			color: $let_mainGreyLight
+
+			&:hover
+				background-color: white
+				border-color: white
+
+	&.-facebook
+		background-color: #3b5998
+		border-color: #3b5998
+		color: #fff
+		position: relative
+		padding-left: 60px
+
+		&:before
+			content: ''
+			background-image: url('../images/icons/fb-icon.png')
+			width: 25px
+			background-size: contain
+			background-repeat: no-repeat
+			position: absolute
+			top: 2px
+			bottom: 5px
+			left: 10px
+
+		&:after
+			content: ''
+			top: 5px
+			bottom: 5px
+			position: absolute
+			left: 45px
+			border-right: 1px solid #fff
+
+	+BSQ_XS()
+		justify-content: center
+
+// BUTTON
+.bigButton
+	border-radius: 6px
+	transition: 0.2s all ease-out
+	border: 1px solid transparent
+	display: flex
+	text-align: center
+	font-size: 1rem
+	font-weight: 600
+	letter-spacing: 1px
+	height: 300px
+	padding: 200px 10% 0
+	max-width: 250px
+	min-width: 200px
+	flex-direction: column
+	align-items: center
+
+	&:hover
+		cursor: pointer
+
+	&:active
+		box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125)
+
+	&__title
+		font-size: 1.2em
+		letter-spacing: 2
+
+	&__subTitle
+		margin-top: 10px
+		font-weight: 500
+		font-size: 0.8em
+		color: $let_dullTextColor
+		transition: 0.2s all linear
+
+		^[-1]:hover &
+			color: #fff
+
+	&.-icon
+		background-repeat: no-repeat
+		background-position: center 50px
+		background-size: 125px
+
+		&.-hasText
+			padding-right: 10px
+
+		&.-uploadDocument
+			background-image: url('../images/icons/uploadType-document.png')
+
+		&.-uploadPhoto
+			background-image: url('../images/icons/uploadType-photo.png')
+
+		&.-uploadVideo
+			background-image: url('../images/icons/uploadType-video.png')
+
+	&.-green
+		background-color: $let_mainGreenLight
+		border-color: white
+		color: white
+
+		&:hover
+			background-color: darken($let_mainGreenLight, 5)
+			border-color: darken($let_mainGreenMiddle, 5)
+
+		&.-invert
+			background-color: white
+			border-color: $let_mainGreenLight
+			color: $let_mainGreenLight
+
+			&:hover
+				background-color: $let_mainGreenLight
+				border-color: $let_mainGreenMiddle
+
+	&.-darkGreen
+		background-color: $let_mainGreenDark
+		border-color: white
+		color: white
+
+		&:hover
+			background-color: lighten($let_mainGreenDark, 5)
+			border-color: darken($let_mainGreenMiddle, 5)
+
+		&.-invert
+			background-color: white
+			border-color: $let_mainGreenLight
+			color: $let_mainGreenLight
+
+		&:hover
+			background-color: $let_mainGreenLight
+			border-color: $let_mainGreenMiddle
+
+	&.-grey
+		background-color: $let_mainGreyLight
+		border-color: $let_mainGreyDark
+		color: white
+
+		&:hover
+			background-color: darken($let_mainGreyLight, 10)
+			border-color: darken($let_mainGreyDark, 10)
+
+		&.-invert
+			background-color: white
+			border-color: white
+			color: $let_mainGreyLight
+
+			&:hover
+				background-color: white
+				border-color: white
+
+	&.-facebook
+		background-color: #3b5998
+		border-color: #3b5998
+		color: #fff
+		position: relative
+		padding-left: 60px
+
+		&:before
+			content: ''
+			background-image: url('../images/icons/fb-icon.png')
+			width: 25px
+			background-size: contain
+			background-repeat: no-repeat
+			position: absolute
+			top: 2px
+			bottom: 5px
+			left: 10px
+
+		&:after
+			content: ''
+			top: 5px
+			bottom: 5px
+			position: absolute
+			left: 45px
+			border-right: 1px solid #fff
+
+	+BSQ_XS()
+		justify-content: center
+
+// BACKGROUND MODIFIERS
+.background
+	// Colors
+	&.-greenMiddleBG
+		background-color: $let_mainGreenMiddle
+
+	&.-greenLightBG
+		background-color: $let_mainGreenLight
+
+	&.-greenDarkBG
+		background-color: $let_mainGreenDark
+
+	&.-whiteBG
+		background-color: #fff
+
+	&.-blackBG
+		background-color: #000
+
+// TEXT MODIFIERS
+.text
+	// Positions
+	&.-center
+		text-align: center
+
+	&.-left
+		text-align: left
+
+	&.-right
+		text-align: right
+
+	// Font styles
+	&.-bold
+		font-weight: 600
+
+	// Colors
+	&.-greenFONT
+		color: $let_mainGreenMiddle
+
+	&.-whiteFONT
+		color: #fff
+
+	&.-blackFONT
+		color: #000
+
+	&.-defaultFONT
+		color: $let_defaultTextColor
+
+// MOBILE DESCRIPTION
+.mobileDescription
+	display: none
+
+	+BSQ_XS()
+		display: inline-block
+		position: absolute
+		left: 70px
+		&:before
+			content: '|'
+			margin: 0 10px
+
+// FANCY RADIO BUTTONS
+.fancyRadio
+	width: 12px
+	height: 12px
+	border: #838383 2px solid
+	border-radius: 50%
+	cursor: pointer
+	position: relative
+
+input[type='radio']:checked+.fancyRadio
+	&:before
+		content: ''
+		border-radius: 50%
+		M_absolute_center()
+		width: 8px
+		height: 8px
+		background-color: $let_mainGreenMiddle
+
+// FANCY CHECKBOX BUTTONS
+.fancyCheckbox 
+	background-image: url('../images/icons/checkboxOff.png')
+	cursor: pointer
+	width: 14px
+	height: 14px
+	background-size: contain
+
+input[type='checkbox']:checked+.fancyCheckbox
+	background-image: url('../images/icons/checkboxOn.png')

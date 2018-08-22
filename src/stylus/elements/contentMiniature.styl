@@ -1,0 +1,204 @@
+.E_contentMiniature
+	width: calc(1200px / 4 - 35px)
+	margin: 25px 10px
+	height: 175px
+	display: inline-block
+	position: relative
+	z-index: 1
+
+	+BSQ_MD()
+		width: calc(100% / 3 - 25px)
+		height: 200px
+
+	+BSQ_SM()
+		width: calc(100% / 2 - 25px)
+		height: 300px
+
+	+BSQ_XS()
+		width: calc(100vw - 65px)
+		height: calc((100vw / 2.5))
+		min-height: 250px
+
+	a
+		position: relative
+		display: block
+		height: 100%
+		box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2)
+		border-radius: 5px
+
+		&:hover
+			+BSQ_NOT_XS_SM_MD()
+				background-color: $let_uhOverlay
+
+	&__ribbon
+		position: absolute
+		top: 0
+		right: 10px
+		width: 30px
+		height: 40px
+		z-index: 4
+		background-color: $let_mainGreenDark
+		background-size: contain
+		background-position: center
+		background-repeat: no-repeat
+
+		&.-album
+			background-image: url('../images/icons/contentTypes/album_white.png')
+
+		&.-locality
+			background-image: url('../images/icons/contentTypes/place_white.png')
+
+		&.-event
+			background-image: url('../images/icons/contentTypes/event_white.png')
+
+		&.-picture
+			background-image: url('../images/icons/contentTypes/photo_white.png')
+
+		&.-video
+			background-image: url('../images/icons/contentTypes/video_white.png')
+
+		&.-audio
+			background-image: url('../images/icons/contentTypes/audio_white.png')
+
+		&.-document
+			background-image: url('../images/icons/contentTypes/doc_white.png')
+
+		&:before
+			content: ''
+			position: absolute
+			width: 0
+			height: 0
+			top: 100%
+			right: left
+			border-style: solid
+			border-width: 15px 15px 0 0
+			border-color: $let_mainGreenDark transparent transparent
+
+		&:after
+			content: ''
+			position: absolute
+			width: 0
+			height: 0
+			top: 100%
+			right: 0
+			border-style: solid
+			border-width: 0 15px 15px 0
+			border-color: transparent $let_mainGreenDark transparent
+
+	&__background
+		M_absolute_fullCover()
+		background-size: cover
+		border-radius: 5px
+
+	&__description
+		position: absolute
+		bottom: 0
+		left: 0
+		right: 0
+		height: 20px
+		background-color: #e6e6e6
+		border-bottom-right-radius: 5px
+		border-bottom-left-radius: 5px
+		color: $let_mainGreenDark
+		M_ellipsis_oneLine()
+		padding: 5px 10px
+		font-size: 1rem
+		width: inherit
+
+		+BSQ_SM()
+			display: none
+
+	// Fix foe IE and Edge since they dont support background blending
+	&__overlay
+		@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)
+			background-color: darken(#52c26f, 10)
+			M_absolute_fullCover()
+			display: none
+			z-index: 1
+			opacity: 0.65
+			border-radius: 5px
+
+		@supports (-ms-ime-align: auto)
+			background-color: darken(#52c26f, 10)
+			M_absolute_fullCover()
+			display: none
+			z-index: 1
+			opacity: 0.65
+			border-radius: 5px
+
+	&__hoverDescription
+		display: none
+		M_absolute_fullCover()
+		text-align: center
+		color: #fff
+		z-index: 2
+		flex-direction: column
+		justify-content: center
+		align-items: center
+		padding: 20px 45px 20px
+
+		+BSQ_SM()
+			display: block
+			bottom: 0
+			left: 0
+			right: 0
+			top: inherit
+			background-color: #e6e6e6
+			border-bottom-right-radius: 5px
+			border-bottom-left-radius: 5px
+			color: $let_mainGreenDark
+			padding: 5px 10px
+			font-size: 0.9rem
+			width: inherit
+			text-align: left
+
+		&__title
+			font-weight: 600
+			font-size: 1.2em
+			letter-spacing: 0.09em
+			margin-bottom: 5px
+
+			+BSQ_SM()
+				font-weight: 500
+				font-size: 1.1em
+
+		&__subTitle
+			font-style: italic
+			font-size: 1em
+			margin-bottom: 5px
+
+			+BSQ_SM()
+				margin-bottom: 0
+
+		&__author
+			display: flex
+			align-items: center
+			margin-top: 5px
+
+			&__name
+				font-size: 1.1em
+
+				+BSQ_SM()
+					font-size: 1em
+
+			/* &__avatar
+			border-radius 50%
+			width: 35px
+			height: 35px
+			background-size: contain
+			margin-right 15px */
+
+	&:hover
+		+BSQ_NOT_XS_SM_MD()
+			& ^[-1]__background
+				filter: grayscale(100%)
+				mix-blend-mode: multiply
+
+			& ^[-1]__overlay
+				display: block
+
+			& ^[-1]__hoverDescription
+				display: flex
+
+			& ^[-1]__description
+				display: none

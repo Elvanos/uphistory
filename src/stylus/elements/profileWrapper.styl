@@ -1,0 +1,39 @@
+.E_profileWrapper
+    $photoSize = 125px
+    display: flex
+
+    +Q_custom(500px)
+        display: block
+
+    &__photo
+        border: 1px solid $let_profileBorder
+        border-radius: 3px
+        width: $photoSize
+        height: $photoSize
+        flex-shrink: 0
+        background-size: cover
+
+    &__content
+        max-height: 'calc(%s + 3px)' % $photoSize
+        padding-left: 10px
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+
+        +Q_custom(500px)
+            padding-left: 0
+            padding-top: 20px
+            display: block
+            max-height: ihnerit
+
+        &__singleBlock
+            &__title
+                font-size: 18px
+                font-weight: 600
+
+            &__info
+                line-height: 1.5
+                font-size: 0.9rem
+
+                &__infoBatch
+                    display: inline-block

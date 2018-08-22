@@ -1,0 +1,121 @@
+// MULTIPLE - Block Newsletter
+.featherlight
+	.featherlight-content
+		background-color: #000
+		padding: 0px
+		border: 0
+		max-width: calc(100% - 20px)
+
+		.featherlight-image
+			max-height: calc(95vh - 100px)
+			margin: auto
+			width: inherit !important
+
+		.navigation
+			display: block
+			//max-width: calc(100% - 20px)
+			overflow-x: auto
+			text-align: center
+			padding-bottom: 10px
+			padding-top: 10px
+			+clearfix
+			white-space: nowrap
+			position: relative
+			z-index: 2
+
+			a
+				background: transparent none
+				margin: 0 2.5px
+				display: inline-block
+				width: 75px				
+				position: relative
+				transition: margin linear 0.2s
+
+				&:before
+					content: ''
+					position: absolute
+					+M_AbsoluteFullCover
+					background-color: rgba(169, 169, 169, 0.35)
+					z-index: 2
+					transition: transform linear 0.2s, right linear 0.2s, background-color linear 0.2s
+
+				&.active,
+				&:hover
+					margin: 0 9px
+					img
+						transform: scale(1.25)
+						border: 3px solid #ffffff !important
+						z-index: 3
+						padding: 0px
+						background-color: #000000
+
+					&:before
+						background-color: transparent
+						transform: scale(1.25)
+						right: 100%
+						z-index: 4
+
+				&:last-child
+					margin-right: 5px
+					&.active
+						margin: 0 9px
+				&:first-child
+					margin-left: 5px
+					&.active
+						margin: 0 9px
+			img
+				width: 100%
+				position: relative
+				border: 0px solid #ffffff !important
+				z-index: 1
+				height: 62px
+				transition: transform linear 0.2s
+				backface-visibility: hidden
+				image-rendering: pixelated
+
+	.featherlight-close-icon.featherlight-close
+		background: transparent
+		color: white
+		font-size: 2.2rem
+		top: 5px
+		right: 5px
+	.featherlight-previous
+		top: 0
+		left: 0
+		bottom: 5px
+		//background-image: -webkit-linear-gradient(left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%)
+		//background-image: -o-linear-gradient(left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%)
+		//background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.5)),to(rgba(0,0,0,.0001)))
+		//background-image: linear-gradient(to right,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%)
+		//filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1)
+		background-repeat: repeat-x
+		opacity: 0
+		background-color: transparent
+		&:hover
+			opacity: .9
+	.featherlight-next
+		top: 0
+		right: 0
+		bottom: 5px
+		//background-image: -webkit-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%)
+		//background-image: -o-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%)
+		//background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.0001)),to(rgba(0,0,0,.5)))
+		//background-image: linear-gradient(to right,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%)
+		//filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1)
+		background-repeat: repeat-x
+		opacity: 0
+		background-color: transparent
+		&:hover
+			opacity: .9
+	.glyphicon
+		font-size: 4rem
+
+
+	+BSQ_XS
+		.featherlight-content
+			.navigation
+				display: none
+
+			.featherlight-image
+				max-height: 95vh
+				max-height: 95vh

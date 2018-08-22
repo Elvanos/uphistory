@@ -1,0 +1,42 @@
+*
+	-moz-box-sizing: border-box
+	-webkit-box-sizing: border-box
+	box-sizing: border-box
+html
+	font-family: Tahoma, sans-serif
+	font-size: 10px
+.pageWrapper
+	max-width: 100vw
+	overflow-x: hidden
+	background: #fff url(../images/background.png)
+.right
+	float: right
+.left
+	float: left
+.formSubmiter
+	cursor: pointer
+
+.text
+	+BEM(green)
+		color: $letMainGreenLight
+	+BEM(white)
+		color: #fff
+
+.bg
+	+BEM(green)
+		background-color: $letMainGreenLight
+
+.blockPadding
+	padding: 50px 0
+
+	+BEM(NMB,m)
+		padding-bottom: 0px
+
+	+BEM(NMT,m)
+		padding-top: 0px
+
+
+//MEDIA QUERY - SMALL
++BSQ_SM
+	.blockPadding
+		padding: 50px 15px

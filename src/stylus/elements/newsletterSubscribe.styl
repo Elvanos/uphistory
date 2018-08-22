@@ -1,0 +1,61 @@
+.E_newsletterSubscribe
+	background: url($path_backgrounds newsletterBackground.png)
+	background-size: cover
+	padding 50px 0
+	
+	&__title
+		padding-bottom: 25px
+		font-weight 700
+		text-align: center
+	
+	&__wrapper
+		border-radius 3px
+		padding: 35px 0 15px
+		max-width: 750px
+		margin: auto
+		display: flex
+		justify-content center
+		
+		
+		&__input
+			input
+				border-radius 3px 0 0 3px
+				width: 320px
+				border: 1px solid #2b3c3e
+				padding: 10px 20px
+				opacity: 0.8
+		
+		&__cta
+			.button
+				border-radius 0 3px 3px 0
+				margin-left: -1px
+				border: 1px solid #2b3c3e
+				padding: 7px 10px
+				background-color: #2b3c3e
+				font-weight: 500
+				font-size: 20px
+			
+
+	&__footnote
+		width: 490px
+		margin: auto
+		
+	// MEDIA QUERY - EXRA SMALL
+	+BSQ_XS()
+		&__wrapper
+			display: block
+			
+			&__input
+				text-align: center
+				input
+					width: 65%
+					margin-bottom 20px
+			
+			&__cta
+				.button
+					margin: auto
+					padding 7px 20px
+					width: 65%
+				
+		&__footnote
+			width: calc(65% + 40px)

@@ -1,0 +1,30 @@
+.E_slider
+
+	&.ui-slider
+	
+		// JQ UI edits
+		border: none
+		height 3px
+		background-color lighten($let_mainGreenDark, 25)
+		border-radius 3px
+		
+		.ui-slider-handle
+			background-color: #fff
+			border-color: $let_mainGreenMiddle
+			border-radius 50%
+			width: 13px
+			height: 13px
+			transition 0.1s background-color linear
+			cursor: pointer
+			
+			// Debugg the UI looks
+			top: -6px
+			
+			&.ui-state-hover
+				background-color: lighten($let_mainGreenLight, 35)
+			
+			&.ui-state-active
+				background-color: lighten($let_mainGreenLight, 25)
+				
+		.ui-widget-header
+			background-color: $let_mainGreenLight

@@ -1,0 +1,46 @@
+.E_galleryThumbnail
+	position: relative
+	margin-bottom: 25px
+	
+	&__overlay
+		display: none
+		position: absolute
+		border-radius: 5px
+		bottom: 3px
+		top: 0
+		left: 0
+		right: 0
+		background-color: rgba(0,0,0,0.5)
+
+		&__content
+			M_absolute_center()
+			max-width: 85%
+			text-align: center
+
+			&__iconWrapper
+				margin: 20px auto 0
+				height 40px
+				width 40px
+				background-image: url($path_icons galleryThumbnailView.png);
+				background-repeat: no-repeat
+				background-position: center
+			
+			&__text
+				M_ellipsis_oneLine()
+				font-size: 1.4rem
+				line-height: 1
+				padding-bottom 5px
+			
+			&__date
+				padding-bottom: 15px
+				font-size: 0.8rem
+				border-bottom: 1px solid #fff
+
+
+	img:not(.galleryThumbnail__overlay__content__iconWrapper__icon)
+		width: 100%
+		border-radius: 5px
+
+	&:hover
+		& ^[-1]__overlay
+			display: block

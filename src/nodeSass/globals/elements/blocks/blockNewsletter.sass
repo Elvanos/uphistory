@@ -1,0 +1,56 @@
+// MULTIPLE - Block Newsletter
+.blockNewsletter
+	background: url("../images/HP_pictures/newsletterBackground.png")
+	background-size: cover
+	
+	+BEM(title)
+		padding-bottom: 25px
+		text-align: center
+
+	+BEM(wrapper)
+		+M_BorderRadius(3px)
+		color: white
+		//border: 1px solid $letMainGreenDark
+		//background-color: $letMainGreenLight
+		padding: 35px 0px
+		max-width: 750px
+		margin: auto
+		
+		+BEM(footnote)
+			width: 430px
+			margin: auto
+			+BSQ_XS
+				width: 65%
+				padding: 0 10px
+		
+		+BEM(input)
+			input
+				+M_BorderRadius($tl: 3px, $bl: 3px, $tr: 0px, $br:0px)
+				width: 320px
+				border: 1px solid #2b3c3e
+				padding: 10px 20px
+				opacity: 0.8
+
+		+BEM(button)
+			+BEM(button,cs)
+				+M_BorderRadius($tl: 0px, $bl: 0px, $tr: 3px, $br:3px)
+				margin-left: -5px
+				border: 1px solid #2b3c3e
+				padding: 6.5px 10px
+				background-color: #2b3c3e
+				font-weight: 500
+				font-size: 20px
+				
+
+
+	// MEDIA QUERY - EXRA SMALL
+	+BSQ_XS
+		+BEM(wrapper)
+			+BEM(input)
+				input
+					width: 65%
+
+			+BEM(button)
+				+BEM(button,cs)
+					margin-left: 0
+					width: 65%

@@ -1,0 +1,138 @@
+// H1
+h1
+	font-size: 4em
+	font-weight: 600
+
+// H2
+h2
+	font-size: 3.7rem
+	font-weight: 600
+
+// H3
+h3
+	font-size: 2.5rem
+	font-weight: 600
+	line-height: 1.5
+	margin: 0
+
+// Link
+a
+	color: white
+	text-decoration: none
+
+	+M_LinkMods
+		text-decoration: none
+		color: white
+
+	+BEM(fancy,ce)
+		display: inline-block
+		position: relative
+
+		+BEM(before,s)
+			content: ''
+			+M_Transition(.4s linear)
+			height: 1px
+			position: absolute
+			left: 0
+			bottom: 0
+			width: 0%
+			background-color: #fff
+
+		+BEM(hover,s)
+			+BEM(before,s)
+				width: 100%
+
+
+// Input
+input
+	+M_BorderRadius(3px)
+	+M_Transition(0.2s all ease-out)
+	border: 1px solid transparent
+	border-color: $letMainGreyLight
+	background-color: $letMainGreyDark
+	color: #fff
+	padding: 5px 10px
+	font-size: 1.1em
+	+placeholder
+		color: $letMainGreyLight
+
+	+BEM(focus,s)
+		border-color: lighten($letMainGreyLight, 10)
+		background-color: lighten($letMainGreyDark, 10)
+		outline: none
+		+placeholder
+			color: transparent
+
+	+BEM(input,ce)
+		+BEM(invert,m)
+			border-color: $letMainGreyDark
+			background-color: white
+			color:  $letMainGreyDark
+			padding: 5px 10px
+			font-size: 1.1em
+			+placeholder
+				color: $letMainGreyLight
+
+			+BEM(focus,s)
+				border-color: lighten($letMainGreyDark, 10)
+				background-color: white
+				outline: none
+				+placeholder
+					color: transparent
+
+// Textarea
+textarea
+	+M_BorderRadius(3px)
+	+M_Transition(0.2s all ease-out)
+	border: 1px solid transparent
+	border-color: $letMainGreyLight
+	background-color: $letMainGreyDark
+	color: #fff
+	padding: 5px 10px
+	font-size: 1.1em
+	min-height: 8em
+	+placeholder
+		color: $letMainGreyLight
+
+	+BEM(focus,s)
+		border-color: lighten($letMainGreyLight, 10)
+		background-color: lighten($letMainGreyDark, 10)
+		outline: none
+		+placeholder
+			color: transparent
+
+	+BEM(invert,m)
+		border-color: $letMainGreyDark
+		background-color: white
+		color:  $letMainGreyDark
+		padding: 5px 10px
+		font-size: 1.1em
+		+placeholder
+			color: $letMainGreyLight
+
+		+BEM(focus,s)
+			border-color: lighten($letMainGreyDark, 10)
+			background-color: white
+			outline: none
+			+placeholder
+				color: transparent
+
+// Select
+select
+	+M_BorderRadius(3px)
+	+M_Transition(0.2s all ease-out)
+	border: 1px solid transparent
+	border-color: $letMainGreyLight
+	background-color: $letMainGreyDark
+	color: #fff
+	padding: 5px 10px
+	font-size: 1.1em
+
+	+BEM(focus,s)
+		border-color: lighten($letMainGreyLight, 10)
+		background-color: lighten($letMainGreyDark, 10)
+		outline: none
+
+// Form
+form
+	display: inline

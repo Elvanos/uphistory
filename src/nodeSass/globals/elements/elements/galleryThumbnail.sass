@@ -1,0 +1,44 @@
+// MOLECULE - Gallery Thumbnail
+.galleryThumbnail
+	position: relative
+	margin-bottom: 25px
+
+	+BEM(overlay)
+
+		display: none
+		position: absolute
+		border-radius: 5px
+		bottom: 0
+		top: 0
+		left: 0
+		right: 0
+		background-color: rgba(0,0,0,0.5)
+
+		+BEM(content)
+			+M_CenterAbsolute		
+			max-width: 85%
+			text-align: center
+
+			+BEM(iconWrapper)
+				padding-top: 20px
+
+			+BEM(text)
+				+M_ElipsisOneline	
+				color: #fff
+				font-size: 2.3rem
+				line-height: 1
+
+			+BEM(date)
+				padding-bottom: 10px
+				color: #fff
+				font-size: 1.3rem	
+				border-bottom: 1px solid #fff
+
+
+	img:not(.galleryThumbnail__overlay__content__iconWrapper__icon)
+		width: 100%
+		border-radius: 5px
+
+	+BEM(hover,s)
+		.galleryThumbnail__overlay
+			display: block

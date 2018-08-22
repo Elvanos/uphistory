@@ -1,0 +1,59 @@
+//MASTER - MIXINS
+
+// Custom Query
+
+Q_custom($size)
+	@media (max-width: $size)
+		{block}
+
+//Super small screen
+Q_XXS()
+	@media (max-width: 500px)
+		{block}
+	
+Q_XXL()
+	@media (min-width: 1300px)
+		{block}
+	
+Q_NOT_XXL()
+	@media (max-width: 1299px)
+		{block}
+
+
+// Bootstrap Queries
+
+$Bootstrap_sm = 768px
+$Bootstrap_md = 992px
+$Bootstrap_lg = 1200px
+
+BSQ_XS()
+	@media (max-width: $Bootstrap_sm - 1)
+		{block}
+
+BSQ_SM()
+	@media (max-width: $Bootstrap_md - 1)
+		{block}
+
+BSQ_MD()
+	@media (max-width: $Bootstrap_lg - 1)
+		{block}
+
+BSQ_LG()
+	@media (min-width: $Bootstrap_lg)
+		{block}
+
+BSQ_NOT_XS()
+	@media (min-width: $Bootstrap_sm)
+		{block}
+
+BSQ_NOT_XS_SM()
+	@media (min-width: $Bootstrap_md)
+		{block}
+
+BSQ_NOT_XS_SM_MD()
+	@media (min-width: $Bootstrap_md)
+		{block}
+
+BSQ_NOT_XS_SM_MD_LG()
+	@media (min-width: $Bootstrap_lg)
+		{block}

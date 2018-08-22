@@ -1,0 +1,164 @@
+.E_dropdown
+	position: relative
+	display: flex;
+	
+	// DROPDOWN PICK
+	&__pick
+		transition 0.2s all linear
+		color: white
+		font-size: 1em
+		cursor: pointer
+		background-color: $let_mainGreenDark
+		display: flex;
+		align-items: center;
+		padding: 0 10px 0 10px
+		
+		&.-main
+			padding: 20px 10px
+		
+		&:hover
+			background-color: $let_mainGreenMiddle
+		
+		a
+			display: block
+			padding: 20px 10px
+			width: 100%;
+			color: white
+			+M_mouseStates()
+				text-decoration: none
+				color: white
+
+		img
+			margin-right: 5px
+			height: 16px
+			margin-top: -2px
+			
+		&__specialBackground
+			display: inline-block
+			
+			&.-upload
+				transition 0.2s all linear
+				background-image: url(../images/icons/headerDropdownUpload.png)
+				background-repeat: no-repeat
+				background-position center
+				background-size contain
+				height: 24px;
+				width: 35px
+			
+				
+			&.-notifications
+				text-align: center
+				font-size: 15px
+				font-weight: 600
+				background-color: $let_mainGreenMiddle
+				padding: 3px 10px
+				border-radius: 4px
+				transition 0.2s all linear
+				position: relative
+				
+				&:after
+					content: ''
+					position: absolute
+					right: 7px
+					top: 100%
+					width: 0
+					height: 0
+					border-style: solid
+					border-width: 0 8px 8px 0
+					border-color: transparent $let_mainGreenMiddle transparent transparent
+					transition 0.2s all linear
+				
+				^[-2]:hover &,
+				^[-2].-opened &,
+				&.-active
+					background-color: #fff
+					color: $let_defaultTextColor
+					
+					&:after
+						border-color: transparent #fff transparent transparent
+		
+		&__marker
+			margin-left: 5px
+			vertical-align: middle
+			background-image: url(../images/icons/dropdown.png)
+			background-repeat: no-repeat
+			height: 6px
+			width: 12px
+			display: inline-block
+			transition 0.2s all linear
+	
+			
+	// DROPDOWN MENU
+	&__menu
+		position: absolute
+		top: 100%
+		right: 0
+		z-index: 1000
+		display: none
+		float: left
+		text-align: left
+		-webkit-background-clip: padding-box
+		background-clip: padding-box
+		
+		&__contentWrapper
+			border-top 1px solid $let_mainGreenMiddle
+			background-color $let_mainGreenDark
+			padding 10px
+			border-radius 2px
+			width 250px
+			
+			&__inner
+				overflow auto
+				max-height 200px
+				
+				&__single
+					background-color rgba(255, 255, 255, 0.80)
+					color: $let_defaultTextColor
+					padding 12px
+					border-bottom 1px solid $let_mainGreenDark
+				
+		& ^[-1]__pick
+			border-bottom: 1px solid $let_mainGreenMiddle
+			padding: 10px
+			white-space: nowrap
+	
+			&:first-child
+				border-top: 1px
+				
+			&:last-child
+				border-bottom: 0px
+				border-bottom-left-radius 3px
+				border-bottom-right-radius 3px
+	
+			
+	// IF DROPDOWN IS OPENED
+	&.-opened
+		& ^[-1]__pick
+			&.-main
+				background-color: $let_mainGreenMiddle
+		
+			&__marker
+				transform rotate(180deg)
+
+		& ^[-1]__menu
+			display: block
+
+
+	//MEDIA QUERY - SMALL
+	+BSQ_SM()
+		
+		&__pick:not(.-main)
+			border-left: 1px solid $let_mainGreenMiddle
+			border-right: 1px solid $let_mainGreenMiddle
+			&:last-child
+				border-bottom: 1px solid $let_mainGreenMiddle
+				border-radius 0
+				
+				
+	//MEDIA QUERY - EXTRA SMALL
+	+BSQ_XS()
+		flex-direction: column;
+	
+		&__menu
+			&__contentWrapper
+				width: calc(100% - 20px)

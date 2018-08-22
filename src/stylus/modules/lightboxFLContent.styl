@@ -1,0 +1,253 @@
+.lightboxFLContent
+	background-color: $let_mainGreenDark
+	padding: 2.5em 1em 1em
+	border: 1em solid $let_mainGreenDark
+	color: #ffffff
+	max-width: 85vw
+	width: 350px
+	
+	&__grid
+		display: flex
+		justify-content space-around
+		
+		>*
+			display: flex
+			justify-content center
+			
+		&.-four
+			>*
+				flex-basis 25%
+				padding: 0 5px
+	
+	&.-imageWindow
+		width: calc(100vw - 50px)
+		border-color: $let_white
+		background-color: $let_white
+		padding: 2.5em 0em 1em 1em;
+		border-right none
+		
+	&.-textBlock
+		width: 960px
+		background: #fff url("../images/background/bgNoise.png")
+		border: 2em solid $let_mainGreenDark
+		border-top: 3.5em solid $let_mainGreenDark
+		padding: 2.5em 2em 2em
+		color: #000
+	
+	&__title
+		font-weight: 600
+		font-size: 2em
+		margin-bottom: 1.5em
+	
+	&__footnote
+		margin-top 15px
+		font-size 0.9em
+	
+		
+	&__horizontalDivider
+		border-bottom 1px #5b6a6d solid
+		margin 20px 0 15px
+		
+	label
+		font-size: 1.1em
+		font-weight 600
+		display: block
+		margin-bottom: 10px
+	
+	input,
+	textarea,
+	select
+		width: 100%
+		max-width: 80vw
+		display: block
+		margin-bottom: 15px
+	
+	.button
+		margin-top:5px
+		width: 100%
+		max-width: 80vw
+		justify-content center
+		
+		&.-facebook
+			justify-content: flex-start;
+
+
+	// MEDIA QUERY - MEDIUM
+	+BSQ_MD()
+		&__grid
+			flex-wrap wrap
+			&.-four
+				>*
+					flex-basis 50%
+					padding: 0 25px
+					margin-bottom: 50px
+					
+					.bigButton
+						width: 250px;
+
+	.imageGrid
+		$infoColPadding = 30px
+		display: flex
+		position: relative
+		*
+			font-family: 'Montserrat', sans-serif;
+			color: #000000;
+			font-size: 17px;
+						
+		&__imageWrapper
+			width: "calc(100% - 350px - %s)" % $infoColPadding
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			height: calc(100vh - 130px);
+			border-radius 4px
+			background-color: #000;
+			flex-grow: 1;
+			flex-shrink: 0;
+		
+		&__infoCollumn
+			padding-left $infoColPadding
+			padding-right: 1em;
+			flex-grow: 1;
+			max-height: calc(100vh - 130px);
+			overflow auto
+
+			
+			&__title
+				font-size: 20px;
+				font-weight: 700;
+				padding-bottom 5px
+				
+			&__details
+				padding-bottom 20px
+				
+				a
+					color: $let_flLinkColor
+					
+					&:before
+						background-color: $let_flLinkColor
+				
+						
+			&__description
+				line-height: 1.4
+	
+			&__userWrapper
+				display: flex
+				padding: 30px 0
+				
+				&__avatar
+					width: 60px
+					
+					img
+						width: 100%
+						border-radius 5px
+				
+				
+				&__details
+					display: flex
+					flex-direction: column
+					justify-content center
+					padding-left 20px
+					
+					&__title
+						font-size: 12px
+						padding-bottom 5px
+						
+					&__userName
+						font-weight: 500;
+						a
+							color: $let_flTitleLinkColor
+							border-bottom: 1px solid $let_flTitleLinkColor
+							transition 0.2s
+							
+							&:hover
+								color: $let_flLinkColor
+								border-bottom: 1px solid $let_flLinkColor
+					
+	
+			&__shareWrapper
+				display: flex
+				justify-content space-between
+				align-items center
+				
+				//&__title
+				
+					
+				&__iconWrapper
+					display: flex
+					
+					&__icon
+						margin-left: 20px
+						i
+							font-size: 25px;
+							
+							color: $let_flLinkColor
+
+					
+
+
+			&__commentsWrapper
+				padding-top 40px
+				padding-bottom: 100px;
+				
+				&__title
+					padding-bottom 5px
+					border-bottom: 1px solid $let_flLinkColor
+				
+				&__commentList
+					&__singleComment
+						padding-top: 20px
+						&__title
+							display: flex
+							align-items: baseline;
+							
+							&__name
+								font-weight: 600
+								
+							&__date
+								color $let_dullTextColor
+								font-size: 12px
+								margin-left 5px
+			
+						&__content
+							padding-top: 5px
+				
+				&__addNew
+					position: absolute;
+					bottom: -15px;
+					right: 2em;
+					width: 315px;
+					padding-top 20px
+					background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 22%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+					background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 22%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+					background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 22%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+					
+					
+					&__title
+						label
+							font-weight 400
+							color: $let_flLinkColor
+							bottom: 5px
+					
+					&__input
+						input
+							border: none
+							background-color: $let_flInputBG
+							padding: 12px 10px;
+							font-size: 12px
+							
+							+M_placeholder()
+								color: darken($let_flInputBG,60)
+
+	// MEDIA QUERY - EXTRA SMALL
+	+BSQ_XS()
+		&.-textBlock
+			border-left: 1em solid $let_mainGreenDark
+			border-right: 1em solid $let_mainGreenDark
+			
+		&__grid
+			flex-wrap wrap
+			&.-four
+				>*
+					flex-basis 100%
+					padding: 0 25px

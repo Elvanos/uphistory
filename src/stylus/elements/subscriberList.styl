@@ -1,0 +1,49 @@
+.E_subscriberList
+    &__title
+        font-size: 18px
+        font-weight: 600
+        margin-bottom: 5px
+
+    &__listWrapper
+        display: flex
+        flex-wrap: wrap
+
+        &__singleSubsriber
+            $photoSize = 40px
+            $photoSize = ($photoSize / 100) * 110
+            width: $photoSize
+            height: $photoSize
+            flex-shrink: 0
+            display: flex
+            align-items: center
+            justify-content: center
+            mix-blend-mode: normal
+            margin-right: 5px
+            margin-bottom: 5px
+            // FF fix for buggy filter/mix blend mode
+            transform: scale(0.9)
+
+            // border: 1px solid transparent
+            &:hover
+                +BSQ_NOT_XS_SM_MD()
+                    background-color: $let_uhOverlay
+
+            &__content
+                display: flex
+                align-items: center
+                justify-content: center
+                width: calc(100%)
+                height: calc(100%)
+                background-size: cover
+                background-color: $let_flLinkColor
+                color: $let_white
+                font-weight: 600
+                font-size: 1.1rem
+                letter-spacing: 0.05rem
+
+            &:hover
+                +BSQ_NOT_XS_SM_MD()
+                    & ^[-1]__content
+                        filter: grayscale(100%)
+                        mix-blend-mode: multiply
+                        background-color: inherit

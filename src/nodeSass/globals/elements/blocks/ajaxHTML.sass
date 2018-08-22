@@ -1,0 +1,64 @@
+// ATOM - MOBILE DECSCRIPTION
+.ajaxHTML
+	background-color: $letMainGreenDark
+	padding: 2.5em 1em 1em
+	color: #ffffff
+	max-width: 85vw
+	width: 350px
+
+	+BEM(textBlock,m)
+		width: 960px
+		background: #fff url("../images/bgNoise.png")
+		border: 2em solid $letMainGreenDark
+		padding: 2.5em 2em 2em
+		color: #ffffff
+		color: #000
+
+	+BEM(title)
+		font-weight: 600
+		font-size: 2em
+		margin-bottom: 1.5em
+
+	label
+		font-size: 1.1em
+
+	input
+		width: 300px
+		max-width: 80vw
+
+	+BEM(button,cs)
+		width: 300px
+		max-width: 80vw
+
+	+BEM(fbButton,cs)
+		background-image: linear-gradient(to bottom, rgba(127,162,222,1) 0%, rgba(45,90,157,1) 100%)
+		background: url(../images/icons/fb_login.png) left top no-repeat
+		background-position: -10px
+		background-size: cover
+		padding: 5px 10px 5px 30px
+		border-color: #3B5998
+
+
+
+
+	// MEDIA QUERY - EXTRA SMALL
+	+BSQ_XS
+		+BEM(textBlock,ce)
+			border-left: 1em solid $letMainGreenDark
+			border-right: 1em solid $letMainGreenDark
+
+		label
+			margin: 0
+
+			+BEM(fbButton,cs)
+				background-position: inherit
+
+
+		+BEM(button,cs)
+			width: 100%
+
+		+BEM(formLine,cs)
+			padding: 0 10px 15px !important
+
+			+BEM(element)
+				padding: 0 !important

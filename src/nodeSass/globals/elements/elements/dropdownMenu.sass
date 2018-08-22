@@ -1,0 +1,45 @@
+// DROPDOWN MENU
+.dropdownMenu
+	position: absolute
+	top: 100%
+	left: 0
+	right: 0
+	z-index: 1000
+	display: none
+	float: left		
+	text-align: left	
+	-webkit-background-clip: padding-box
+	background-clip: padding-box	
+
+
+	+BEM(dropdownPick,cs)
+		border-bottom: 1px solid $letMainGreenMiddle
+		padding: 10px
+
+		+BEM(dropdownMarker)
+			+M_VerticalCenterAbsolute
+
+		+BEM(first-child,s)
+			border-top: 1px
+
+		+BEM(last-child,s)
+			border-bottom: 0px
+			+M_BorderRadius($br:3px,$bl:3px)
+
+
+
+
+
+	//MEDIA QUERY - SMALL
+	+BSQ_SM
+
+		+BEM(dropdownPick,cs)
+			border-left: 1px solid $letMainGreenMiddle
+			border-right: 1px solid $letMainGreenMiddle
+			+BEM(last-child,s)
+				border-bottom: 1px solid $letMainGreenMiddle
+				+M_BorderRadius(0px)
+
+.open
+	+BEM(dropdownMenu,cs)
+		display: block

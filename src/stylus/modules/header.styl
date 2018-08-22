@@ -1,0 +1,204 @@
+.M_header
+	padding: 0 40px 0
+	background-color: $let_mainGreenDark
+	border-bottom: 1px solid $let_mainGreenMiddle
+	border-top: 3px solid $let_mainGreenLight
+	position: fixed
+	top: 0
+	z-index: 999
+	width: calc(100% - 80px)
+	max-height: 100vh
+	display: flex
+	justify-content: space-between
+
+	// Left part of menu
+	&__alwaysVisible
+		display: flex
+		align-items: center
+		
+		&__logo
+			img
+				height: 45px;
+				padding: 10px 0 5px;
+		
+		&__searchWrapper
+			form
+				display: flex
+				padding: 0 10px
+
+	// Hamburger menu and trigger
+	.E_hamburgerControl
+		display: none
+		position: absolute
+		right: 40px
+		top: 20px
+		cursor: pointer
+		width: 25px
+		height: 25px
+		
+		&.-opened
+			top: 25px
+
+		&__line
+			border-top: 4px solid #fff
+			position: absolute
+			width: 100%
+			transition: transform 0.5s, border 0.3s, bottom 0.5s, top 0.5s
+			
+			&:nth-child(1)
+				top: 0
+			&:nth-child(2)
+				M_absolute_centerVertical()
+			&:nth-child(3)
+				bottom: 0
+			
+			// Stylus cant handle this :(
+			^[-1].-opened .E_hamburgerControl__line
+				
+				&:nth-child(1)
+					 top: 10px
+					 bottom: inherit
+					 transform: rotate(60deg)
+					 border-top: 2px solid #fff
+				&:nth-child(2)
+					 border: transparent
+				&:nth-child(3)
+					 top: 10px
+					 bottom: inherit
+					 transform: rotate(120deg)
+					 border-top: 2px solid #fff
+
+	.E_hamburgerMenu
+		display: flex
+		
+		&__accountManagement
+			display: flex
+			align-items center
+			
+		.E_dropdown
+			&__pick
+				margin: 0
+				padding 0
+				
+				&.-main
+					padding: 20px 10px
+			&.-headerLanguages
+				.E_dropdown__menu
+					left 0
+					
+			&.-headerInfo
+				.E_dropdown__menu
+					left: inherit
+					
+	//MEDIA QUERY - MEDIUM
+	+BSQ_MD()
+		flex-wrap wrap
+		
+		&__alwaysVisible
+			float: none
+		
+		.E_hamburgerControl
+			display: block
+		
+		.E_hamburgerMenu
+			transition: max-height ease-out 0.5s
+			max-height: 0
+			overflow: hidden
+			width 100%
+			
+			&__accountManagement
+				& + .E_dropdown
+					margin-left: auto
+			
+			&.-opened
+				display: flex
+				overflow inherit
+				max-height inherit
+	
+	//MEDIA QUERY - SMALL
+	+BSQ_SM()
+		padding: 0 10px
+		width: calc(100% - 20px)
+		
+		.E_hamburgerControl
+			right: 20px
+	
+	//MEDIA QUERY - EXTRA SMALL
+	+BSQ_XS()
+		overflow: hidden
+		padding 10px
+	
+		.mobileDescription
+			font-size 1.2em
+		
+		.E_dropdown
+			width: 100%
+			
+			&__pick
+				&__marker
+					margin-left: auto
+		
+		&__alwaysVisible
+			
+			.formElement
+				margin-right 5px
+				padding 0
+			
+			&__logo
+				img
+					padding 10px 0 5px
+					height: 35px
+			
+			&__searchWrapper
+				padding: 0 10px 0
+				
+		.E_hamburgerControl
+			right: 10px
+			top: 24px
+		
+		.E_hamburgerMenu
+			overflow: auto
+			padding: 0
+			flex-direction: column
+			
+			&.-opened
+				padding: 0 10px 10px
+			
+			.formDivider
+				display: none
+			
+			.E_dropdown__pick
+				border-bottom: 1px solid $let_mainGreenMiddle
+		
+					
+			.divider
+				display: none
+			
+			&__accountManagement
+				display: block
+				padding: 15px 0
+			
+			.E_dropdown__menu
+				position: relative
+				top: inherit
+				left: inherit
+				right: inherit
+				z-index: 1
+				float: none
+	
+	// MEDIA QUERY - SPECIAL
+	+Q_custom(590px)
+		
+		&__alwaysVisible
+		
+			.formDivider
+				display: none
+			
+			.button.-map
+				display: none !important
+			
+			&__searchWrapper
+				&__searchField
+					width: calc(100vw - 250px) !important
+	
+	

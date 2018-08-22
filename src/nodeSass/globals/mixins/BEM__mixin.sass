@@ -1,0 +1,283 @@
+// BEM METOLOGY BUILD MIXIN
+// USAGE:	Capable of completely replacing most standard CSS syntax and follow BEM methology
+// SUPPORT AND EXAMPLES:
+
+	// SUPPORT:		Joined classes		-	.test.test2		#test.test2
+		// EXAMPLE:	+BEM(test2,ce)
+
+	// SUPPORT:		Sub clases			-	.test .test		#test . test2
+		// EXAMPLE:	+BEM(test2,cs)
+
+	// SUPPORT:		Joined IDs			-	.test#test2		#test#test2
+		// EXAMPLE:	+BEM(test2,ide)
+
+	// SUPPORT:		Sub IDs				-	.test #test2	#test #test2
+		// EXAMPLE:	+BEM(test2,ids)
+
+	// SUPPORT:		Pseudo-selectors	-	.test:hover		#test:nth-child(4)
+		// EXAMPLE:	+BEM(test2,s)
+
+	// SUPPORT:		BEM Elements		-	.test__test2
+		// EXAMPLE:	+BEM(test2,e) ('e' is default and therefore optional)
+
+	// SUPPORT:		BEM Modifiers		-	.test--test2
+		// EXAMPLE:	+BEM(test2,m)
+
+// EXTRA FEATURES
+
+	// "STUPID INPUT"
+		// DESCRIPTION: In case the input it automaticly bad (function) or manualy (dev doesnt realize he can just type in name), the mixin fixes it for him
+		// EXAMPLES:
+			// INPUT:				+BEM(__test)		+BEM(.test,cs)		+BEM(#test,ide)
+			// EXPECTED OUTPUT:		<element>____test	<element> ..test	<element>##ide
+			// FIXED OUTPUT:		<element>__test		<element> .test		<element>#ide
+
+	// "MULTI INPUT"
+		// DESCRIPTION: Support of multiple inputs, mixed as the dev needs (all supports mentioned above can be combined a much as the used wishes in any amount)
+		// EXAMPLE:
+			// INPUT:				+BEM((a,b,c,d,e),(e,m,sc,ide,s))
+			// OUTPUT:				<element>__a,<element>--b,<element> .c,<element>#d,<element>:e
+
+
+=BEM($selectors, $type:e)
+
+	// Final selector string used
+	$selectorFinal: ''
+
+	// Count the number of cycle itteration (selectors)
+	$counter: 0
+
+	// Check how many selectors do we have as an input
+	$selectorsLength: length($selectors)
+	
+
+	// Cycle through the each selector in the list
+	@each $selectorSingle in $selectors
+
+		// Evade any future bugs by converting the current selector into a string
+		$selectorSingle: inspect($selectorSingle)
+
+		// Reset a single selector rebuilder
+		$selectorSingle__rebuild: ''
+
+		// Add one :P
+		$counter: $counter + 1
+
+		// Check if:
+			// 	We arent on first element
+			//	AND
+			//	Length of the selector list is equal or smaller than current selector position
+		@if $counter > 1 and $selectorsLength <= $counter
+
+			// Add comma between two selectors
+			$selectorFinal: $selectorFinal + '|'
+
+		// IF element
+		@if nth($type, $counter) == e
+
+			// Stupid input check
+			$index: str-index($selectorSingle, '__')
+
+			// If FALSE stupid input
+			@if not $index
+				$selectorSingle__rebuild: '__'
+
+			@else
+				$selectorSingle__rebuild: ''
+
+
+			// Build selector that will be added to final string
+			$selectorSingle__rebuild: $selectorSingle__rebuild+$selectorSingle
+
+			// Add current selector to final string
+			$selectorFinal: $selectorFinal + & + $selectorSingle__rebuild
+
+			// Fix buggy sub-level
+			$selectorFinal: str-replace($selectorFinal, ',', $selectorSingle__rebuild+',')
+
+
+		// IF modifier
+		@if nth($type, $counter) == m
+
+			// Stupid input check
+			$index: str-index($selectorSingle, '--')
+
+			// If FALSE stupid input
+			@if not $index
+				$selectorSingle__rebuild: '--'
+
+			@else
+				$selectorSingle__rebuild: ''
+
+			// Build selector that will be added to final string
+			$selectorSingle__rebuild: $selectorSingle__rebuild+$selectorSingle
+
+			// Add current selector to final string
+			$selectorFinal: $selectorFinal + & + $selectorSingle__rebuild
+
+			// Fix buggy sub-level
+			$selectorFinal: str-replace($selectorFinal, ',', $selectorSingle__rebuild+',')
+
+		// IF extra class
+		@if nth($type, $counter) == ce
+
+			// Stupid input check
+			$index: str-index($selectorSingle, '.')
+
+			// If FALSE stupid input
+			@if not $index
+				$selectorSingle__rebuild: '.'
+
+			// Build selector that will be added to final string
+			$selectorSingle__rebuild: $selectorSingle__rebuild+$selectorSingle
+
+			// Add current selector to final string
+			$selectorFinal: $selectorFinal + &
+
+			// Fix buggy sub-level
+			$selectorFinal: str-replace($selectorFinal, ',', $selectorSingle__rebuild+',')
+
+			$selectorFinal: $selectorFinal + $selectorSingle__rebuild
+
+
+		// IF sub class
+		@if nth($type, $counter) == cs
+
+			// Stupid input check
+			$index: str-index($selectorSingle, '.')
+			$index2: str-index($selectorSingle, ' .')
+
+			// If TRUE stupid input
+			@if $index
+				$selectorSingle__rebuild: ' '
+
+			@if not $index2
+				$selectorSingle__rebuild: ' .'
+
+			// Build selector that will be added to final string
+			$selectorSingle__rebuild: $selectorSingle__rebuild+$selectorSingle
+
+			// Add current selector to final string
+			$selectorFinal: $selectorFinal + &
+
+			// Fix buggy sub-level
+			$selectorFinal: str-replace($selectorFinal, ',', $selectorSingle__rebuild+',')
+
+			$selectorFinal: $selectorFinal + $selectorSingle__rebuild
+
+		// IF extra ID
+		@if nth($type, $counter) == ide
+
+			// Stupid input check
+			$index: str-index($selectorSingle, '#')
+
+			// If FALSE stupid input
+			@if not $index
+				$selectorSingle__rebuild: '#'
+
+			// Build selector that will be added to final string
+			$selectorSingle__rebuild: $selectorSingle__rebuild+$selectorSingle
+
+			// Add current selector to final string
+			$selectorFinal: $selectorFinal + &
+
+			// Fix buggy sub-level
+			$selectorFinal: str-replace($selectorFinal, ',', $selectorSingle__rebuild+',')
+
+			$selectorFinal: $selectorFinal + $selectorSingle__rebuild
+
+
+		// IF sub ID
+		@if nth($type, $counter) == ids
+
+			// Stupid input check
+			$index: str-index($selectorSingle, '#')
+			$index2: str-index($selectorSingle, ' #')
+
+			// If TRUE stupid input
+			@if $index
+				$selectorSingle__rebuild: ' '
+
+			// If FALSE stupid input
+			@if not $index2
+				$selectorSingle__rebuild: ' #'
+
+			// Build selector that will be added to final string
+			$selectorSingle__rebuild: $selectorSingle__rebuild+$selectorSingle
+
+			// Add current selector to final string
+			$selectorFinal: $selectorFinal + &
+
+			// Fix buggy sub-level
+			$selectorFinal: str-replace($selectorFinal, ',', $selectorSingle__rebuild+',')
+
+			$selectorFinal: $selectorFinal + $selectorSingle__rebuild
+
+
+		// IF CSS state
+		@if nth($type, $counter) == s
+
+			// Stupid input check
+			$index: str-index($selectorSingle, ':')
+
+			// If FALSE stupid input
+			@if not $index
+				$selectorSingle__rebuild: ':'
+
+			// Build selector that will be added to final string
+			$selectorSingle__rebuild: $selectorSingle__rebuild+$selectorSingle
+
+			// Add current selector to final string
+			$selectorFinal: $selectorFinal + &
+
+			// Fix buggy sub-level
+			$selectorFinal: str-replace($selectorFinal, ',', $selectorSingle__rebuild+',')
+
+			$selectorFinal: $selectorFinal + $selectorSingle__rebuild
+
+
+	$selectorFinal: str-replace($selectorFinal, '|', ',')
+	// Fall back on root to generate correct selector and build the selector from there
+	@at-root
+		#{$selectorFinal}
+			@content
+
+
+
+@function str-replace($string, $search, $replace: '')
+	$index: str-index($string, $search)
+
+	@if $index
+		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace)
+
+
+	@return $string
+
+
+
+@function nth-selector($str, $n)
+	@for $i from 1 through $n
+		@if (str_index($str, '__'))
+			@if $i == $n
+				$str: str_slice($str, 0, str_index($str, '__') - 1)
+			@else
+				$str: str_slice($str, str_index($str, '__') + 1)
+
+	@return unquote($str)
+
+/*
+	#{nth-selector(#{&}, 2)} .cc
+		width: 20px;
+	
+	
+	@at-root #{nth-selector(#{&}, 2)} .cc
+		width: 10px;
+
+
+	.grand-parent .parent .parent .cc
+		width: 20px
+
+
+	.parent .cc {
+		width: 10px;
+

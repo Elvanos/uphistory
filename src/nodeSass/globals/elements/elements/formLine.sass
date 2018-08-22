@@ -1,0 +1,74 @@
+// MOLECULE - FORM LINE 
+.formLine
+	padding: 10px 0px
+
+
+	+BEM(NMT,m)
+		padding-top: 0px
+
+	+BEM(NMB,m)
+		padding-bottom: 0px
+
+	+BEM(NMTB,m)
+		padding: 0
+
+	+BEM(divider)
+		margin: 0 5px
+		border-left: solid 1px #5e5e5e
+		display: inline-block
+		height: 33px
+		vertical-align: bottom
+
+
+	+BEM(element)
+		padding: 0px 10px
+		display: inline-block
+		vertical-align: top
+
+		+BEM(NMR,m)
+			padding-right: 0px
+
+		+BEM(NML,m)
+			padding-left: 0px
+
+		+BEM(NMRL,m)
+			padding: 0
+
+		+BEM(FW,m)
+			width: 100%
+
+			input
+				width: 100% !important
+			select
+				width: 100% !important
+			textarea
+				width: 100% !important
+			+BEM(button,cs)
+				width: 100% !important
+
+	// MEDIA QUERY - EXTRA SMALL
+	+BSQ_XS
+		padding: 10px 0
+		display: block
+
+		+BEM(NMT,m)
+			padding: 10px 0
+
+		+BEM(NMB,m)
+			padding: 10px 0
+
+		+BEM(NMTB,m)
+			padding: 10px 0
+
+		+BEM(element)
+			padding: 10px 10px
+			display: block
+
+			+BEM(NMR,m)
+				padding: 10px 10px
+
+			+BEM(NML,m)
+				padding: 10px 10px
+
+			+BEM(NMRL,m)
+				padding: 10px 10px

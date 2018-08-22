@@ -1,0 +1,86 @@
+.M_footer
+	padding: 10px 50px
+	background-color: $let_mainGreenDark
+	color: #fff
+	border-top: 1px solid $let_mainGreenMiddle
+	font-size: 0.9rem
+	display: flex
+	a
+		color: #fff
+		+M_mouseStates()
+			color: #fff
+
+	&__half
+		display: flex
+		align-items center
+		width: 50%
+		
+		+BSQ_XS()
+			display: block
+			width 100%
+		
+		&__collumn
+			width 50%
+			display: flex
+			flex-direction column
+			
+			+BSQ_XS()
+				display: block
+				width 100%
+			
+			&__element
+				margin 5px 0
+				
+				+BSQ_XS()
+					margin 15px 0
+
+		&__iconRow
+			display: flex
+			align-items flex-end
+			justify-content center
+			flex-direction column
+			width: 100%
+			
+			+BSQ_XS()
+				align-items flex-start
+			
+			&__iconsWrapper
+				display: flex
+				margin-bottom 10px
+				
+				&__icon
+					height: 35px
+					width 35px
+					background-repeat no-repeat
+					background-size contain
+					margin 0 10px
+					
+					&:last-child
+						margin-right 0
+						
+					+BSQ_XS()
+						&:first-child
+							margin-left 0
+					
+					&.-facebook
+						background-image url($path_icons socials/facebook.png)
+					&.-twitter
+						background-image url($path_icons socials/twitter.png)
+					&.-youtube
+						background-image url($path_icons socials/youtube.png)
+					&.-instagram
+						background-image url($path_icons socials/instagram.png)
+			//&__text
+			
+		
+		
+		
+	//MEDIA QUERY - SMALL
+	+BSQ_SM()
+		padding: 10px 15px
+	
+	+BSQ_XS()
+		display: block
+	
+		> *
+			margin-bottom 10px

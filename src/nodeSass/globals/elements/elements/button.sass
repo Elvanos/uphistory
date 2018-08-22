@@ -1,0 +1,57 @@
+// ATOM - BUTTON
+.button
+	+M_BorderRadius(3px)
+	+M_Transition(0.2s all ease-out)
+	border: 1px solid transparent
+	padding: 5px 10px
+	display: inline-block
+	text-align: center	
+	font-size: 1.5rem
+	font-weight: 600
+	letter-spacing: 1px
+	white-space: nowrap
+
+	img
+		max-width: 18px
+
+	+BEM(hover,s)
+		cursor: pointer
+
+	+BEM(active,s)
+		box-shadow: inset 0 3px 5px rgba(0,0,0,0.125)
+
+	+BEM(green,m)
+		background-color: $letMainGreenLight
+		border-color: $letMainGreenMiddle
+		color: white
+
+		+BEM(hover,s)
+			background-color: darken($letMainGreenLight, 10)
+			border-color: darken($letMainGreenMiddle, 10)
+
+		+BEM(invert,m)
+			background-color: white
+			border-color: white
+			color: $letMainGreenLight
+
+			&:hover
+				background-color: $letMainGreenLight
+				border-color: $letMainGreenMiddle
+
+	+BEM(grey,m)
+		background-color: $letMainGreyLight
+		border-color: $letMainGreyDark
+		color: white
+
+		+BEM(hover,s)
+			background-color: darken($letMainGreyLight, 10)
+			border-color: darken($letMainGreyDark, 10)
+
+		+BEM(invert,m)
+			background-color: white
+			border-color: white
+			color: $letMainGreyLight
+
+			+BEM(hover,s)
+				background-color: white
+				border-color: white

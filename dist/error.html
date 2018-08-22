@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hygotrend</title>
+        <meta charset="UTF-8">
+        <style type="text/css">
+            body{
+                font-family: 'Open Sans', Arial, sans;
+                font-size: 14px;
+                padding:0;
+                margin:0;
+                background: #eefaff;
+            }
+
+            #header{
+                height:140px;
+                background-color: white;
+                position: relative;
+                z-index: 2;
+            }
+
+            #header_container{
+                max-width: 1190px;
+                margin: auto;
+                padding: 15px 15px;
+            }
+
+            #logo{
+               float:left;
+            }
+
+            #contact{
+                float:right;
+            }
+
+            #content{
+                max-width: 1190px;
+                margin: auto;
+                background-color: white;
+                position: relative;
+                z-index: 1;
+                padding: 30px;
+                text-align: center;
+                font-size: 18px;
+
+            }
+
+            #title{
+                font-size: 22px;
+            }
+
+            #inner_wrap{
+                padding-top: 4vw;
+                padding-bottom: 4vw;
+            }
+
+            .border-wrap{
+                -webkit-box-shadow: 0 0 10px rgba(173, 229, 253, 0.75);
+                -moz-box-shadow: 0 0 10px rgba(173, 229, 253, 0.75);
+                box-shadow: 0 0 10px rgba(173, 229, 253, 0.75);
+            }
+
+            .btn{
+                color: #fff;
+                background-color: #337ab7;
+                border-color: #2e6da4;
+                padding: 6px 12px;
+                display: inline-block;
+                border-radius: 4px;
+            }
+
+            .btn:hover{
+                background-color: #286090;
+                border-color: #204d74;
+            }
+
+            @media screen and (max-width: 550px) {
+                    #logo{
+                        float:none;
+                        text-align: center;
+                    }
+
+                    #contact{
+                        float:none;
+                         text-align: center;
+                    }
+
+                    #header{
+                        height:inherit;
+                    }
+                }
+
+        </style>
+    </head>
+    <body>
+        <div class="border-wrap" id="header">
+            <div id="header_container">
+                <div id="logo">                    
+                    <img src="img/logo.png">                                      
+                </div>
+                <div id="contact">
+                    Zavolejte nám na +420 326 721 168                   
+                </div>                
+            </div>
+        </div>
+        <div class="border-wrap" id="content">
+            <div id="inner_wrap">
+                <div id="title">JEJDA!</div>
+                <div id="text">
+                        <p>Někde se stala chyba a Váš požadavek nebylo možno dokončit.</p>
+                        <p>Omlouváme se za vzniklé nepříjemnosti.</p>
+                        <p>Opakujte prosím akci nebo nám zavolejte na výše uvedené číslo.</p>
+
+                            <a href="https://www.hygotrend.cz/">
+                                <div class="btn">Přejít zpět na stránky</div>
+                            </a>
+
+                </div>
+            </div>
+         </div>
+    </body>
+</html>
+
+

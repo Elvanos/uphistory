@@ -1,0 +1,112 @@
+//MASTER - MIXINS
+
+// Bootstrap Queries
+
+$Bootstrap_sm: 768px
+$Bootstrap_md: 992px
+$Bootstrap_lg: 1200px
+
+=BSQ_XS
+	@media (max-width: #{$Bootstrap_sm - 1})
+		@content
+
+=BSQ_SM
+	@media (max-width: #{$Bootstrap_md - 1})
+		@content
+
+=BSQ_MD
+	@media (max-width: #{$Bootstrap_lg - 1})
+		@content
+
+=BSQ_LG
+	@media (min-width: #{$Bootstrap_lg})
+		@content
+
+=BSQ_NOT_XS
+	@media (min-width: #{$Bootstrap_sm})
+		@content
+
+=BSQ_NOT_XS_SM
+	@media (min-width: #{$Bootstrap_md})
+		@content
+		
+=BSQ_NOT_XS_SM_MD
+	@media (min-width: #{$Bootstrap_md})
+		@content
+
+=Q_Custom($input)
+	@media (#{$input})
+		@content
+
+// Transition vendor mixin
+=M_Transition($transition...)
+	-moz-transition: $transition
+	-o-transition: $transition
+	-webkit-transition: $transition
+	transition: $transition
+
+// Tranform vendor mixin
+=M_Tranform($transform...)
+	-ms-transform: $transform
+	-webkit-transform: $transform
+	transform: $transform
+
+// Full cover for absolute position
+=M_AbsoluteFullCover
+	top: 0
+	bottom: 0
+	right: 0
+	left: 0
+
+=M_VerticalCenterAbsolute
+	position: absolute
+	bottom: 50%
+	+M_Tranform(translateY(50%))
+	
+	
+=M_HorizontalCenterAbsolute
+	position: absolute
+	right: 50%
+	+M_Tranform(translateX(50%))
+	
+=M_CenterAbsolute
+	position: absolute
+	bottom: 50%
+	right: 50%
+	+M_Tranform(translate(50%,50%))
+
+=M_LinkMods
+	&:hover,
+	&:focus,
+	&:active
+		@content
+
+=M_BorderRadius($value: 3px, $bl: false, $tl: false, $tr: false, $br: false)
+	@if $bl == false and $br == false and $tr == false and $tl == false
+		-webkit-border-radius: $value
+		-moz-border-radius: $value
+		border-radius: $value		
+	@else
+		@if $bl != false
+			-webkit-border-bottom-left-radius: $bl
+			-moz-border-bottom-left-radius: $bl
+			border-bottom-left-radius: $bl
+		@if $br != false
+			-webkit-border-bottom-right-radius: $br
+			-moz-border-bottom-right-radius: $br
+			border-bottom-right-radius: $br
+		@if $tl != false
+			-webkit-border-top-left-radius: $tl
+			-moz-border-top-left-radius: $tl
+			border-top-left-radius: $tl
+		@if $tr != false
+			-webkit-border-top-right-radius: $tr
+			-moz-border-top-right-radius: $tr
+			border-top-right-radius: $tr
+
+=M_ElipsisOneline
+	display: inline-block
+	text-overflow: ellipsis
+	width: 100%
+	overflow: hidden
+	white-space: nowrap
