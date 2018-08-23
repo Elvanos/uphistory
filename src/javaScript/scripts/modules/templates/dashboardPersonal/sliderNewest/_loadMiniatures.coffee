@@ -22,7 +22,7 @@ _loadMiniatures = (app, module, subModule, offset) ->
         beforeSendBatch: [
             subModule._disableArrow
             subModule._showAjaxLoader
-        ]
+        ] 
         completeBatch: [
             subModule._enableArrow
             subModule._hideAjaxLoader
