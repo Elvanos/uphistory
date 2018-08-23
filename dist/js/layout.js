@@ -868,7 +868,7 @@ var Uphistory = function () {
     globals = app.globals;
     input = {
       path: globals.ajaxPaths.loadMiniaturesInfo,
-      amount: 20,
+      amount: 24,
       offset: globals.templateSettings.offsetMixed,
       types: globals.templateSettings.miniatureTypes,
       sortBy: globals.templateSettings.sortBy,

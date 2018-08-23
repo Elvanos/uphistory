@@ -4,7 +4,7 @@ _loadMiniatures = (app, module) ->
     
     input =
         path: globals.ajaxPaths.loadMiniaturesInfo
-        amount: 20
+        amount: 24
         offset: globals.templateSettings.offsetMixed
         types: globals.templateSettings.miniatureTypes
         sortBy: globals.templateSettings.sortBy
