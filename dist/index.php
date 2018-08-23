@@ -2,7 +2,7 @@
 
 global $params;
 $params['path'] = getcwd();
-$params['web_path'] = $_SERVER['SERVER_NAME'].'/uh/dist';
+$params['web_path'] = $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 
 if (!isset($_GET['layout']))
 	{
