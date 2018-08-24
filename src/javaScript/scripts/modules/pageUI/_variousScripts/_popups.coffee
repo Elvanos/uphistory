@@ -63,7 +63,7 @@ _popups = (app, module) ->
                 # Check if we click somewhere inside the dropdown, if we are, kill the script
                 caretElement = clickTarget.closest('.js-popup').find('.js-popupTrigger')
                 if caretElement.length isnt 0
-                    return                    
+                    return
 
                 # If user clicked elsewhere, close everything
                 itterateCarets('close')

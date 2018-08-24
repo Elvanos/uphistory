@@ -761,7 +761,6 @@ var Uphistory = function () {
         if (caretElement.length !== 0) {
           return;
         }
-
         // If user clicked elsewhere, close everything
         return itterateCarets('close');
       });
