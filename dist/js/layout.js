@@ -512,8 +512,6 @@ var Uphistory = function () {
     resize = function resize() {
       var filterHeight, filterPadding, headerHeight, headerMenuHeight, masterWrapper, masterWrapperPadding, windowWidth;
       windowWidth = window.innerWidth;
-      console.log(windowWidth);
-
       // Set local vars
       headerHeight = resizeObj.headerWrapper.outerHeight(true);
       masterWrapper = resizeObj.masterWrapper;
@@ -541,13 +539,11 @@ var Uphistory = function () {
 
       // Calculate
       masterWrapperPadding = headerHeight;
-      console.log('before filter: ' + masterWrapperPadding);
       if (resizeObj.filterTop && windowWidth > globals.BSQ_MD) {
         masterWrapperPadding = masterWrapperPadding + filterHeight;
       }
 
       // Resize
-      console.log('final: ' + masterWrapperPadding);
       masterWrapper.css({
         marginTop: masterWrapperPadding
       });
@@ -702,7 +698,7 @@ var Uphistory = function () {
   var _popups;
 
   _popups = function _popups(app, module) {
-    var addPopupCloseClickListener, addPopupCloseHoverListener, addPopupOpenClickListener, addPopupOpenHoverListener, cleanUpCarets, closeCaret, openCaret;
+    var addPopupClickListener, closeCaret, itterateCarets, openCaret;
 
     // Open caret (opens popups via CSS)
     openCaret = function openCaret(caretElement) {
@@ -719,75 +715,62 @@ var Uphistory = function () {
       caretElement.removeClass('js-opened');
       return caretElement.removeClass('-opened');
     };
+    /*
+    @ comamnd = close, open
+    @ caretElement = jQuery element selector of the caret
+    */
+    itterateCarets = function itterateCarets(command, caretElement) {
+      var caretElementsArray, caretItteration, i, len;
+      if (caretElement == null) {
+        caretElement = '';
+      }
 
-    // Close all carets on opening a new one
-    cleanUpCarets = function cleanUpCarets(caretElement) {
-      var allCarets, caret, i, len;
-      allCarets = $('.js-popupTrigger.js-opened');
-      for (i = 0, len = allCarets.length; i < len; i++) {
-        caret = allCarets[i];
-        caret = $(caret);
-        if (caret !== caretElement) {
-          closeCaret(caret);
+      // Close all unnecesary carets
+      caretElementsArray = $(document).find('.js-popupTrigger.js-opened');
+      for (i = 0, len = caretElementsArray.length; i < len; i++) {
+        caretItteration = caretElementsArray[i];
+        // Wrap it in jQ object, so we can compare properly
+        caretItteration = $(caretItteration);
+        if (!caretItteration.is(caretElement)) {
+          closeCaret(caretItteration);
         }
       }
-      if (caretElement != null) {
+      // Open caret
+      if (command === 'open') {
         return openCaret(caretElement);
       }
     };
-
     // Add popup listeners for closing or clicking outside
-    addPopupCloseClickListener = function addPopupCloseClickListener() {
+    addPopupClickListener = function addPopupClickListener() {
       return $(document).on('click', function (e) {
-        var clickTarget, clickTargetPopup;
+        var caretElement, clickTarget;
         clickTarget = $(e.target);
-        clickTargetPopup = clickTarget.closest('.js-popup');
-
-        // Click outside of popup or on a trigger
-        if (clickTargetPopup.length === 0 && !clickTarget.hasClass('js-popupTrigger')) {
-          return cleanUpCarets();
+        caretElement = clickTarget.closest('.js-popupTrigger');
+        // Check if we clicked inside the trigger
+        if (caretElement.length !== 0) {
+          // Check if the triger is already opened, if it is, close the carets
+          if (caretElement.hasClass('js-opened')) {
+            itterateCarets('close');
+            return;
+          }
+          itterateCarets('open', caretElement);
+          return;
         }
-      });
-    };
+        // Check if we click somewhere inside the dropdown, if we are, kill the script
+        caretElement = clickTarget.closest('.js-popup').find('.js-popupTrigger');
+        if (caretElement.length !== 0) {
+          return;
+        }
 
-    // Add popup listeners for opening for clicking
-    addPopupOpenClickListener = function addPopupOpenClickListener() {
-      return $(document).on('click', '.js-popupTrigger', function (e) {
-        var caretElement;
-        e.preventDefault();
-        caretElement = $(this);
-        return cleanUpCarets(caretElement);
-      });
-    };
-
-    // Add popup listeners for closing for hover
-    addPopupCloseHoverListener = function addPopupCloseHoverListener(caretElement) {
-      var popup;
-      popup = caretElement.find('.js-popup');
-      return popup.on('mouseleave', function () {
-        cleanUpCarets();
-        return popup.off('mouseleave');
-      });
-    };
-
-    // Add popup listeners for opening for hover
-    addPopupOpenHoverListener = function addPopupOpenHoverListener() {
-      return $(document).find('.js-hoverPopupTrigger').on('mouseenter', function () {
-        var caretElement, dataSelector;
-        dataSelector = $(this).data('target');
-        caretElement = $('.js-popupTrigger[data-target="' + dataSelector + '"]');
-        cleanUpCarets(caretElement);
-        return addPopupCloseHoverListener(caretElement);
+        // If user clicked elsewhere, close everything
+        return itterateCarets('close');
       });
     };
 
     // React to clicks
-    addPopupCloseClickListener();
-    addPopupOpenClickListener();
+    addPopupClickListener();
   };
 
-  // React to hovers
-  //addPopupOpenHoverListener()
   var _popups_18 = _popups;
 
   var _ajaxLoaderError;

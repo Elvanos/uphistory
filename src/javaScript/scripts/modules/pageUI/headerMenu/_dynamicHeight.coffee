@@ -17,8 +17,6 @@ _dynamicHeight = (app, module, template) ->
     
         windowWidth = window.innerWidth
 
-        console.log windowWidth
-        
         # Set local vars
         headerHeight = resizeObj.headerWrapper.outerHeight(true)
         masterWrapper = resizeObj.masterWrapper
@@ -45,14 +43,10 @@ _dynamicHeight = (app, module, template) ->
         # Calculate
         masterWrapperPadding = headerHeight
 
-        console.log 'before filter: ' + masterWrapperPadding
-
         if resizeObj.filterTop and windowWidth > globals.BSQ_MD
             masterWrapperPadding = masterWrapperPadding + filterHeight
     
         # Resize
-        console.log 'final: ' + masterWrapperPadding
-
         masterWrapper.css({ marginTop: masterWrapperPadding })
     
         if resizeObj.filterTop and windowWidth > globals.BSQ_MD
